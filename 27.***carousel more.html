@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        /* 把圖片縮到符合大小 */
+        li img {
+            width: 100%;
+            height: 100%;
+            /* 重點！！！！ */
+            object-fit: cover;
+        }
+
+        /* 這邊就要把外層的寬度拉大，才能讓每一張圖片都是800，而不會收縮  */
+        .img-wrap {
+            width: 4800px;
+            /* 這裡如果移動，外框wrap不移動，裡面的照片移動，就會有視差看起來像在輪播一樣 */
+            /* left: -800px; */
+            /* 這邊設定transition可以讓圖片慢一點出現，造成滑動出現的效果 */
+            left: 0;
+            /* 讓第一個跳轉時也變成滑動*/
+            transition: 0.6s;
+        }
+
+        /* 設定整個dots列的位置，把它移到最下面 */
+        .slider-dots {
+            bottom: 0;
+        }
+
+        /* 設定dots每一個點點的狀態 */
+        .slider-dots li {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 4px;
+            border: 1px solid white;
+            /* 這邊設定可以讓點點慢慢變白色 */
+            transition: 0.6s;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap position-relative">
+        <!-- 多層的時候習慣用ul/ li 去包 -->
+        <!-- list-unstyled 去掉點點！！！！！！！ -->
+
+        <ul class="img-wrap list-unstyled d-flex position-absolute">
+            <!--這裡下一個position，然後用ＪＱ調整他的left位置，就可以變換圖片-->
+            <li><img src="./imgs/slide1.jpg" alt=""></li>
+            <li><img src="./imgs/slide2.jpg" alt=""></li>
+            <li><img src="./imgs/slide3.jpg" alt=""></li>
+            <li><img src="./imgs/slide4.jpg" alt=""></li>
+            <li><img src="./imgs/slide5.jpg" alt=""></li>
+            <!-- 多加一張圖，才能做無限循環 -->
+            <li><img src="./imgs/slide1.jpg" alt=""></li>
+        </ul>
+
+        <!-- 疊在圖片上的輪播白點點 -->
+        <!-- !!!!!為何justify-content-center沒作用是因為，它的寬是靠裡面的東西撐的，所以要致中在圖片中間，就要把寬設定成跟整個圖一樣 -->
+        <ul class="slider-dots position-absolute list-unstyled d-flex justify-content-center w-100">
+
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // JS宣告，後面自動輪播才能計算
+        let index = 0
+
+
+        //先設定目前所在的第一個位置是白色
+        $('.slider-dots li').first().css('background', 'white');
+
+        // 在設定滑過時會變顏色
+        $('.slider-dots li').hover(function () {
+            console.log("hi", $(this).index());
+            // 先選擇this,改變顏色，再選擇其他的，然後都要沒有背景
+            $(this).css('background', 'white').siblings().css('background', 'none');
+
+
+            // 都在hover這個function裡面，剛剛做完點，現在要做img-wrap
+            // 用$(this).index()就能整齣目前是第幾張，然後乘上-800就可以移動到想要的圖
+            $('.img-wrap').css('left', -800 * $(this).index())
+        })
+
+        // ＪＳ讓它自幾動
+        // (()=>是箭頭函式，等於function，但ＪＱ比較舊，是es5之前的產物，所以是用function
+        setInterval(() => {
+            // 現在要設定if條件，以免index一直變大，但我後面又沒有圖片了
+
+
+            // 這邊是我右邊還有一張圖，先去右邊
+            $('.img-wrap').css('transition', '0.5s').css('left', -800 * index);
+
+            //這個拉下來是因為，如果我的圖片大於五，圖片要繼續移動，但點點要跳回第一個
+            // if (index > 5) {
+            //     index = 0;
+            // }else{index=index}
+
+            // 三元（xyz） 來表達if
+            //這邊是負責讓白點變回第一個的控制
+            // (index > 5)? true : flase
+            //是否為true? 如果是的話給我0, 不是就給index
+            // 用a代號去代替，這樣就不用改掉 index，否則還要另外設定
+            let dotsIndex = (index >= 5) ? 0 : index
+
+            $('.slider-dots li').eq(dotsIndex).css('background', 'white').siblings().css('background', 'none');
+            index = index + 1;
+
+        }, 2000); //這邊是自動播放的秒數，一千毫秒等於一秒鐘
+
+        // 現在要看transition 結束的秒，監聽不同瀏覽器webkit 跟o
+        $('.img-wrap').on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+            console.log('index:', index);
+            // 這邊是把第五張圖的transition換成0，讓圖片沒有transition的換回第一張，做出視覺效果覺得無限循環
+            //if是index>5代表已經到假圖時，才會換
+            if (index > 5) {
+                $('.img-wrap').css('transition', 'none').css('left', '0');
+                index = 1
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    <style>
+        .wrapper {
+            width: 800px;
+            height: 400px;
+            background-color: #cac;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: lightblue;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper position-relative mx-auto mt-2">
+        <div class="box position-absolute">
+        </div>
+    </div>
+
+    <div class="py-3 text-center">
+        <div class="py-1">
+            <button id="top" class="btn btn-info">
+                <i class="fas fa-caret-up"></i>
+            </button>
+        </div>
+
+        <button id="left" class="btn btn-info mx-3">
+            <i class="fas fa-caret-left"></i>
+        </button>
+
+        <button id="right" class="btn btn-info mx-3">
+            <i class="fas fa-caret-right"></i>
+        </button>
+
+        <div class="py-1">
+            <button id="down" class="btn btn-info">
+                <i class="fas fa-caret-down"></i>
+            </button>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 先宣告高度Top =0
+        let boxTop = $('.box').css('top');
+        console.log('boxTop >0  ?', boxTop > 0)
+
+        // 
+        let boxLeft = $('.box').css('left');
+        console.log('boxLeft >0  ?', boxLeft > 0)
+
+
+        $('#right').on("click", function () {
+            boxLeft = parseInt($('.box').css('left'))
+            if (boxLeft < 680) {
+                $('.box').css('left', '+=20')
+            } else { //如果不是left 是 0，就讓他從left 0開始～～
+                $('.box').css('left', '0')
+            }
+        })
+
+        $('#left').on("click", function () {
+            boxLeft = parseInt($('.box').css('left'))
+            if (boxLeft > 0) {
+                $('.box').css('left', '-=20')
+
+            }
+
+        })
+
+        $('#top').on("click", function () {
+            boxTop = parseInt($('.box').css('top'))
+            if (boxTop > 0) {
+                $('.box').css('top', '-=20')
+            }
+
+        })
+
+        $('#down').on("click", function () {
+            boxTop = parseInt($('.box').css('top'))
+            if (boxTop < 280) {
+                $('.box').css('top', '+=20')
+            } else { //如果Top 不是 0，就讓他從left 0開始～～
+                $('.box').css('top', '0')
+            }
+        })
+
+
+
+        //這邊設定鍵盤的按鍵，讓它也能用鍵盤操作
+        $(document).on('keydown', function (event) {
+            //event是指目前鍵盤進行的事件，例如：按左鍵就是一個事件
+            //which可以得到鍵盤按鍵的數值，每個鍵盤按鍵都會有一個數值
+            console.log('event', event.which);
+
+
+            let code = event.which
+            //=== 嚴格等於，後面一定要是數字的40才能動
+
+            //down =40
+            if (code === 40) {
+                //單純設定可以往下移動
+                // $('.box').css('top', '+=20')
+
+                //設定往下時限制不跑出框框
+                boxTop = parseInt($('.box').css('top'))
+                if (boxTop < 280) {
+                    $('.box').css('top', '+=20')
+                }
+
+                //right =39
+            } else if (code === 39) {
+                // $('.box').css('left', '+=20')
+
+                //設定往右時不超過
+                boxLeft = parseInt($('.box').css('left'))
+                if (boxLeft < 680) {
+                    $('.box').css('left', '+=20')
+                }
+
+                //left = 37
+            } else if (code === 37) {
+                boxLeft = parseInt($('.box').css('left'))
+                if (boxLeft > 0) {
+                    $('.box').css('left', '-=20')
+
+                }
+
+                //up =37
+            } else if (code === 38) {
+                boxTop = parseInt($('.box').css('top'))
+                if (boxTop > 0) {
+                    $('.box').css('top', '-=20')
+                }
+
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

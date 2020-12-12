@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #ece;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <button>bounce</button>
+        <div class="box"></div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $('button').on('click', function () {
+            // $(this).text()這邊的意思是加上按鈕的text的名稱，所以原本“animate__bunce就不用加bounce,會自動把text的字加上去”
+            // 這樣的話按鈕就能做成動畫名稱
+            let btnName = 'animate__animated animate__' + $(this).text();
+
+            // $('.box').toggleClass('animate__animated animate__bounce' + btnName)
+
+            // 監聽一次就remove這個
+            $('.box').addClass(btnName).one('animationend', function () {
+                $(this).removeClass(btnName);
+
+            });
+
+        })
+    </script>
+</body>
+
+</html>

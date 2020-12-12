@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex1 Practice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Table -->
+
+    <div class="container w-70 m-auto">
+        <table class="table table-bordered">
+            <tbody>
+                <tr class="row1">
+                    <th scope="col">
+                        <input class="check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    </th>
+
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+
+                <tr class="row2">
+                    <th scope="row">
+                        <input class="check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    </th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+
+                <tr class="row3">
+                    <th scope="row"> <input class="check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    </th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+
+                <tr class="row4">
+                    <th scope="row"> <input class="check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    </th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+
+        <!-- my own JQ -->
+        <script>
+            $(document).ready(function () {
+
+                // ＊＊做法一
+                // $('input[type="checkbox"]').click(function () {
+                //     // console.log('checkbox', $(this).prop('checked'))後面的$會印出ture 或flase被checked，協助後面寫if else的條件
+
+                // **if 裡面一定要是true 或 flase
+                //     if ($(this).prop('checked')) {
+                //         $(this).closest('tr').css('background', '#eee')
+                //     } else {
+                //         $(this).parents('tr').css('background', 'transparent')
+
+                //     }
+
+                // })
+
+
+                // ＊＊做法二
+                $('input[type="checkbox"]').click(function () {
+                    // 先把所有的背景都變成透明, 這樣沒有 checked 的時候才會是白色
+                    $('tr').css('background', 'transparent');
+                    // 再把有checked的選起來， 然後改變顏色
+                    $('input:checked').closest('tr').css('background',
+                        '#eee')
+
+                })
+
+            })
+        </script>
+
+</body>
+
+</html>

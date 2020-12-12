@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+
+
+    <main>
+
+        <div class="wrap">
+            <div class="box">box1</div>
+            <div class="box">box2</div>
+            <div class="box">box3</div>
+            <div class="box">box4</div>
+            <div class="box">box5</div>
+            <div class="box">box6</div>
+            <div class="box">box7</div>
+            <div class="box">box8</div>
+            <div class="box">box9</div>
+            <div class="box">box10</div>
+            <div class="box">box11</div>
+            <div class="box">box12</div>
+
+        </div>
+
+        <div class="wrap2">
+            <div class="box">15562</div>
+            <div class="box">15562</div>
+            <div class="box">133</div>
+        </div>
+
+        <div class="wrap3">
+            <div class="box">box</div>
+            <p>QQQQ</p>
+        </div>
+
+        <div class="wrap4"></div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 這個是整個wrap算是這個dom裡面第一個子代，所以才會全部變黃
+        // $("div:first-child").css("background", "yellow");
+
+        // 如果想要box1變黃，就要寫成下面這個
+        // $(".box:first-child").css("background", "yellow");
+
+        // 如果要選最後一個div的最後一項，則要在div.wrap同一層再加一個div.wrap，才能選到第一個div的最後一個
+        // $('.box:first-child').css('background', 'pink');
+        // $("div:last-child").css("background", "yellow");
+    </script>
+</body>
+
+</html>

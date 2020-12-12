@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse event</title>
+</head>
+
+<body>
+    <button class="btn">Click</button>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn').click(function () {
+                console.log('clicked')
+            })
+            $('.btn').dblclick(function () {
+                console.log('dblclicked')
+            })
+
+            // 右鍵
+            $('.btn').contextmenu(function () {
+                console.log('contectmenu')
+            })
+
+            // mouse-down 是滑鼠按下但沒放開，或是在按鈕外才放開
+            $('.btn').mousedown(function () {
+                console.log('mousedown')
+            })
+            // mouse-up 是滑鼠按下後在按鈕內放開
+            $('.btn-dbl').mouseup(function () {
+                console.log('mouseup')
+            })
+
+            // 移開移進的路線
+            $('.btn').mouseenter(function () {
+                console.log('mouseenter')
+            })
+
+            $('.btn').mouseleave(function () {
+                console.log('mouseleave')
+            })
+
+            // hover的進出都會回傳事件，要分開的話要另外寫
+            $('.btn').hover(function () {
+                console.log('hover')
+            })
+        })
+    </script>
+
+</body>
+
+</html>

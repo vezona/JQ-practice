@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>content has</title>
+</head>
+
+<body>
+
+    <!--  -->
+    <div>abc</div>
+    <div>
+        <p>def</p>
+    </div>
+
+
+    <!-- hdden -->
+    <div hidden>ccc</div>
+    <div>
+        <p>adds</p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $('div:has(p)').css('background', 'yellow')
+
+        // 選隱藏的物件,串連一次改多項
+        $('div:hidden').css('color', 'red').css('font-size', '50px').show()
+    </script>
+</body>
+
+</html>

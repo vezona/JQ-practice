@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ Toggle Event</title>
+    <style>
+        .box-a,
+        .box-b {
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+        }
+
+        .box-b {
+            background-color: #afa;
+        }
+
+        /* QA */
+        .QA {
+            background-color: #aaa;
+        }
+
+        .QA-info {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-a">box1</div>
+    <div class="box-b">box2</div>
+
+    <!-- 購物相關問題 -->
+    <div class="QA">購物相關問題</div>
+    <div class="QA-info">十年經銷商消除小區規則說道阿宅人民共和國，打電話學科對外滿足條件今天，通知直接。</div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(".box-a").click(function () {
+            $(".box-b").css('background-color', 'red')
+        })
+
+        // 點擊購物相關問題，跳出下方文字
+
+        $(document).ready(function () {
+            $(".QA").click(function () {
+                $(".QA-info").toggle();
+            })
+        })
+    </script>
+</body>
+
+</html>

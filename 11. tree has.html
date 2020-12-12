@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <div class="a1">A1</div>
+    </div>
+    <div>
+        <div class="a2">A2</div>
+    </div>
+    <div>
+        <div class="a3 red">A3</div>
+        <div class="a3">A3</div>
+        <div class="a3">A3</div>
+
+    </div>
+
+
+
+    <!-- JQ ~ ~ ~ ~ ~ ~ ~ -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            // $('div').has('.a1').css('background', 'yellow')
+
+            // 用not的話，這個的意思是最上層的div也不是.a1, 所以也會被改掉背景
+            // $('div').not('.red').css('background', 'yellow')
+
+            // 如果想要選not， 可以多加class去選哪一層的東西要變
+            $('div .a3').not('.red').css('background', 'yellow')
+        })
+    </script>
+</body>
+
+</html>

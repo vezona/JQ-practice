@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" name="user" class="form-constrol">
+                </div>
+                <button typel="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- boo -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+    </script>
+
+    <!-- own JQ -->
+    <script>
+        $('form').submit(function (event) {
+            event.preventDefault(); //先阻止一直送出表單，才不會reolad，才能印出下面console的東西
+            console.log('hi', event.target) //用event.target才能夠找出form表單裡面的even的target事件，而不是所有的form event
+
+            $(':text').focus(function () {
+                console.log('hi focus')
+            })
+
+            $(':text').blur(function () {
+                console.log('hi blur')
+            })
+
+
+        })
+
+        // 寫出來的時候，就不用submit就能呈現
+        $(':text').change(function () {
+            console.log('input change', $(this).val()) //用this.val才能直接印出打的數字，不然會回傳一堆this內的東西
+        })
+    </script>
+</body>
+
+
+</html>

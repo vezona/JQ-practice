@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .small {
+            font-size: 15px
+        }
+
+        .medium {
+            font-size: 30px
+        }
+
+        .large {
+            font-size: 40px;
+        }
+
+        .active {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="btn-wrap">
+            <button class="btn btn-small">S</button>
+            <button class="btn btn-medium">M</button>
+            <button class="btn btn-large">L</button>
+
+        </div>
+
+        <div class="h3">This is title</div>
+
+        <p class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim distinctio vitae qui, voluptas,
+            similique
+            praesentium culpa, fuga voluptate quibusdam porro minima cum quas dolorum id optio? Reiciendis cumque alias
+            deleniti error unde. Suscipit dicta, atque harum molestias accusantium dolor pariatur eligendi doloribus
+            nihil! Nihil possimus rem hic doloribus adipisci tenetur.</p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $('.btn-large').on('click', function () {
+            // console.log('click')
+            // 在加之前，不管之前有什麼，都把我remove掉，這樣才能加上之後的class
+            $('.text').removeClass('small').removeClass('medium')
+            $('.text').addClass('large')
+
+            // 加上active的狀態。要先消除所有的active,再把我自己加上去
+            $('.btn').removeClass('active')
+            $(this).addClass('active')
+        })
+
+        $('.btn-medium').on('click', function () {
+            // console.log('click')
+            // 在加之前，不管之前有什麼，都把我remove掉，這樣才能加上之後的class
+            $('.text').removeClass('large').removeClass('small')
+            $('.text').addClass('medium')
+
+            // 加上active的狀態。要先消除所有的active,再把我自己加上去
+            $('.btn').removeClass('active')
+            $(this).addClass('active')
+        })
+
+        $('.btn-small').on('click', function () {
+            // console.log('click')
+            // 在加之前，不管之前有什麼，都把我remove掉，這樣才能加上之後的class
+            $('.text').removeClass('large').removeClass('medium')
+            $('.text').addClass('small')
+
+            // 加上active的狀態。要先消除所有的active,再把我自己加上去
+            $('.btn').removeClass('active')
+            $(this).addClass('active')
+        })
+
+
+        // // 下面是如果不要一一設定class name，全部都要是btn，就用btn有的text文字去設定區別哪個btn
+        // $('btn').on('click', function () {
+        //             // 第一種做法
+        //             // $(this).text() === 'small'
+        //             // 第二種做法
+        //             if ($(this).is(":contains('
+        //                     small ')")){
+        //                     $('text').addClass('small')
+
+        //                 }
+
+        //             })
+    </script>
+</body>
+
+</html>

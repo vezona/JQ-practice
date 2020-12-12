@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll to fix</title>
+    <style>
+        body {
+            height: 300vh;
+
+        }
+
+        header {
+            height: 130px;
+        }
+
+        nav {
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+            color: #000;
+
+            /* 過去會用position來定住，現在可以把這些放在加class裡 */
+            /* position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;*/
+        }
+
+
+        nav.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <nav class="nav">I am a nav</nav>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 先找物件在視窗的高度
+        let navTop = $('nav').offset().top;
+
+
+        $(window).scroll(function () {
+            // 再偵測使用者滑到哪裡要出現什麼
+            let scrollTop = $(this).scrollTop();
+            if (scrollTop >= navTop) {
+                $('nav').addClass('fixed')
+            } else {
+                $('nav').removeClass('fixed')
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

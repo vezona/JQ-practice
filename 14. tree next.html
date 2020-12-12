@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="level-1">
+        <li class="item-i">I</li>
+        <li class="item-ii">II
+            <ul class="level-2">
+                <li class="item-a">item-a</li>
+                <li class="item-b">item-b
+                    <ul class="level-3">
+                        <li class="item-1">item-1</li>
+                        <li class="item-2">item-2</li>
+                        <li class="item-3">item-3</li>
+                    </ul>
+                </li>
+                <li class="item-c">item-c</li>
+                <li class="item-d">item-d</li>
+                <li class="item-e">item-e</li>
+                <li class="item-f">item-f</li>
+            </ul>
+        </li>
+        <li class="item-iii">III</li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 找同一層的next
+        $('.item-2').next().css('color', 'red')
+
+
+        // 找同一層的next
+        // $('.item-b').next().css('color', 'red')
+
+        // 找next後面全部的
+        // $('.item-a').nextAll().css('color', 'red')
+
+        // 找next後面，且不包含，但只能選同一層，不能選小孩
+        $('.item-a').nextUntil('.item-c').css('color', 'red')
+    </script>
+</body>
+
+</html>

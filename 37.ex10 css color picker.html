@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex10 color picker</title>
+    <style>
+        .wrap {
+
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box {
+            width: 40%;
+            height: 300px;
+            background-color: #ccc;
+
+        }
+
+        .box1 {
+            display: flex;
+
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-right: 20px;
+        }
+
+        .circle1 {
+            background-color: #ace;
+
+        }
+
+        .circle2 {
+            background-color: #ecc;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="box box2"></div>
+        <div class="box box1">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        //做法一，設定remove 或add class
+        // $('.circle1').on('click', function () {
+        //     $('.box2').removeClass('circle2')
+        //     $('.box2').addClass('circle1')
+
+        // })
+
+        // $('.circle2').on('click', function () {
+        //     $('.box2').removeClass('circle1')
+        //     $('.box2').addClass('circle2')
+
+        // })
+
+
+        // 做法二，設定變數去更改css
+        $('.circle').on('click', function () {
+            //先宣告變數，設定color是目前點到的人的css背景色
+            let color = $(this).css('background');
+            //在設定盒子的背景色是宣告好的color的顏色
+            $('.box2').css('background', color)
+
+        })
+    </script>
+</body>
+
+</html>

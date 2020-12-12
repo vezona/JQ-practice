@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll percent</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 800vh;
+            transition: .6s;
+
+        }
+
+        .wrap {
+
+            background-color: #ccc;
+            width: 100%;
+            height: 50px;
+            position: fixed;
+        }
+
+        .progressBar {
+            background-color: #afc;
+            height: 50px;
+            width: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="progressBar"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // $(window).scroll(function () {
+        //     console.log($(this).scrollTop())
+        //     $('.progressBar').css('width', $(this).scrollTop());
+
+        // })
+
+
+        let pageHeight = $('body').height(); //先定義整個頁面的長度，但這個頁面的長度是算到最後一頁的最上方，所以下面還有scrollBar的高度沒算
+        let windowHeight = $(window).height(); //算視窗的高（也就是scrollbar），才能抓出scaroobar的高度
+
+        $(window).scroll(function () {
+            let scrollTop = $(this).scrollTop(); //定義scroppTop的長度
+
+            //再把pageHeight 跟scrollTop相除換算成比例;但pageHeight要減掉視窗的高度（也就是scroll的高度）
+            let percent = (scrollTop / (pageHeight - windowHeight)) * 100 +
+                '%'
+            $('.progressBar').css('width', percent);
+
+            // !!!!滑動到哪裡時變色
+            //記得加else, 往上滑的時候才會復原
+            if (scrollTop > 750) {
+                $('body').css('background', 'orange');
+            } else {
+                $('body').css('background', 'none');
+            }
+
+
+            // 視差滾動Parallax Scrolling (用background-attachment:fixed做)
+
+        })
+    </script>
+</body>
+
+</html>

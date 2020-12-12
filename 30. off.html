@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>on one selector</title>
+</head>
+
+<body>
+    <button id="on">On</button>
+    <button id="off">Off</button>
+    <button id="show">show</button>
+    <p id="show-text"></p>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        let index = 0;
+
+        // 綁定on之後，按show就會呈現目前的次數
+        let show = function () {
+            //改文字
+            $('#show-text').text('on' + index);
+            // 再做一次就再把index+1
+            index++
+        }
+
+
+
+        $('#on').on('click', function () {
+            //幫我綁定show 這個function 到#show這個按鈕身上
+            $('#show').on('click', show)
+        })
+
+        $('#off').on('click', function () {
+            // 幫我 從#show身上解除綁定show function
+            $('#show').off('click', show)
+
+        })
+    </script>
+</body>
+
+</html>

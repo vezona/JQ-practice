@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svg</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 100vw;
+
+        }
+
+        h2 {
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 36px;
+            margin-top: 40px;
+        }
+
+
+        /* 圓的動畫*/
+        .circle1 {
+            /* 每30 px一個dash  */
+            /* stroke-dasharray: 30; */
+            /* 這邊可以看出他是從右邊切口開始圈 */
+            /* stroke-dasharray: 1150; */
+            /* 所以要到下面，加上transform="rotate(-90 200 200)" 逆時針轉九十度，圓心是200/200 */
+            /* 完成後做一個滿版的元，然後加offset,代表從1194偏移，一直到offset的位置。所以如果offset變成原本的1194位置，之後就可以做動畫回到原點的感覺 */
+            stroke-dasharray: 1194;
+            stroke-dashoffset: 1194;
+            /* 在最後一格呈現填滿的狀態 */
+
+
+        }
+
+        /* active實再動畫 */
+        .circle1.active {
+            animation: circle 1s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes circle {
+
+            /* 偏移一倍，逆時針：偏移兩倍，順時針 */
+            from {
+                stroke-dashoffset: 1194;
+            }
+
+            to {
+                stroke-dashoffset: 2388;
+
+            }
+
+        }
+
+        /* 打勾的動畫*/
+        .tick {
+            stroke-dasharray: 350;
+            stroke-dashoffset: 350;
+
+        }
+
+
+        @keyframes polyline {
+            from {
+                stroke-dashoffset: 350;
+            }
+
+            to {
+
+                stroke-dashoffset: 0;
+
+            }
+
+        }
+
+        .tick.active {
+            animation: polyline 1s ease-in-out;
+            animation-fill-mode: forwards;
+            animation-delay: .5s;
+        }
+
+
+        /* 文字出現 */
+        h2 {
+            opacity: 0;
+        }
+
+        h2.active {
+            animation: h2 1s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes h2 {
+            from {
+                opacity: 0;
+            }
+
+            to {
+
+                opacity: 1;
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <button>click</button>
+
+    <!-- 不管如何，要先定義畫布寬高 -->
+    <svg width="400" height="400">
+        <!-- 圓會有的數值 -->
+        <circle class="circle1" cx="200" cy="200" r="190" fill="none" stroke="#68E534" stroke-width="20"
+            stroke-linecap="round" transform="rotate(-90 200 200)" />
+        <polyline class="tick" fill="none" stroke="#68E534" stroke-width="24" points="88,214 173,284 304,138"
+            stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+
+
+    <h2>Payment success</h2>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $('button').on('click', function () {
+            // console.log('click')
+            $('.circle1').toggleClass('active')
+            $('.tick').toggleClass('active')
+            $('h2').toggleClass('active')
+        })
+    </script>
+</body>
+
+</html>

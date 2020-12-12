@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add class</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #acc;
+        }
+
+        /* 想要加的class放在這邊 */
+        /* 如果兩個東西都要有active狀態，而且active狀態還不同，那就把那個東西的class夾在前面 */
+        .link.active {
+            color: #aaa;
+        }
+
+
+        .box.active {
+            background-color: #ece;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="addClass">add</button>
+    <button id="removeClass">remove</button>
+    <button id="toggleClass">toggle class</button>
+
+
+    <a class="link"">這是連結</div>
+    <div class=" box"></div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script>
+            // 用addClass要注意權重，權重如果沒有大過本來的class，會改不過去
+            $('#addClass').on('click', function () {
+                $('.box').addClass('active');
+            })
+
+            $('#removeClass').on('click', function () {
+                $('.box').removeClass('active');
+            })
+
+
+            // 切換來切換去
+            $('#toggleClass').on('click', function () {
+                $('.box').toggleClass('active');
+            })
+        </script>
+</body>
+
+</html>

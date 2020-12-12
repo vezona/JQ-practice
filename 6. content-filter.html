@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>content filter practice</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="names">Jason Kidd</div>
+    <div class="names">LeBron James</div>
+    <div class="names">Jason Williams</div>
+    <div class="names">James Harden</div>
+
+
+
+
+    <!-- empty filter -->
+
+    <table class="table empty">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td>3</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table notempty">
+        <tbody>
+            <tr>
+                <td>5</td>
+                <td></td>
+                <td>8</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+
+
+        // content filter
+        $("div.names:contains('Jason')").css("background", "red")
+
+
+        // empty filter
+
+        // $('.empty td:empty').css('background', 'yellow')
+
+        // 觸發事件
+        // $('td').click(function () {
+        //     $('.empty td:empty').css('background', 'yellow')
+        // })
+
+        // 觸發效果，不指定，而是誰被點就要變黃
+        $('td').click(function () {
+            $(this).css('background', 'yellow')
+        })
+
+
+    </script>
+</body>
+
+</html>

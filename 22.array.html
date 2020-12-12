@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <form action="">
+                <div class="form-row">
+                    <!-- 第一個下拉式選單內，有三個選項 value是選單的 -->
+                    <div class="form-group">
+                        <select calss="form-control" name="city" id="city">
+                            <option value="0">基隆</option>
+                            <option value="1">台北</option>
+                            <option value="2">新北</option>
+                        </select>
+                    </div>
+
+                    <!-- 第二個下拉式選單內，有三個選項 value是選單的 -->
+                    <div class="form-group">
+                        <select calss="form-control" name="district" id="district">
+                            <option value="0">七堵</option>
+                            <option value="1">中正</option>
+                            <option value="2">暖暖</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        let districtObj = [
+            ['七堵', '中正', '暖暖'],
+            ['中正', '大安', '信義'],
+            ['蘆洲', '三重', '新店'],
+        ];
+
+
+        $('#city').change(function () {
+            // console.log('hi', $(this).val()) //要知道目前點的value，才知道要怎麼動作
+            console.log('hi', districtObj[$(this).val()]) //let 一個object之後，要找出目前點的districtObj的value，
+            let city = $(this).val(); //this=city
+
+            $('#district option').each(function () {
+                //this=district
+                $(this).text(districtObj[city][$(this).val()])
+
+            })
+        })
+    </script>
+</body>
+
+</html>

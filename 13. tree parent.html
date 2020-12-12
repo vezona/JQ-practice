@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="level-1">
+        <li class="item-i">I</li>
+        <li class="item-ii">II
+            <ul class="level-2">
+                <li class="item-a">item-a</li>
+                <li class="item-b">item-b
+                    <ul class="level-3">
+                        <li class="item-1">item-1</li>
+                        <li class="item-2">item-2</li>
+                        <li class="item-3">item-3</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="item-iii">III</li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 選爸爸的話，小孩也會繼承，所以顏色也會變紅
+        // $('li.item-1').parent().css('color', 'red');
+
+        // 距離自己最近的li，就是自己～～
+        // $('.item-1').closest('li').css('color', 'red');
+
+        // 找最接近的上層li，找到後改顏色，但他的小孩會繼承這個改動
+        // $('.level-3').closest('li').css('color', 'red');
+
+        // 找爸爸，只找一層
+        // $('li .item-1').parent().css('color', 'red');
+
+        // 找爸爸，往上找所有，（）內可設定找到誰或是種類
+        // $('li .item-1').parents('.level-2').css('color', 'red');
+
+        // 找爸爸，往上找直到（）中的元素為止，但注意，不包含括弧內的--跟parents不同
+        // $('li .item-1').parentsUntil('.level-2').css('color', 'red');
+    </script>
+</body>
+
+</html>

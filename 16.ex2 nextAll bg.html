@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex2 Practice</title>
+    <style>
+        /* * {
+            outline: 1px solid red;
+        } */
+
+        .container {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            align-content: flex-start;
+
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: #acc;
+            margin: 5px 10px;
+            /* border: 2px solid green; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box box1">box1</div>
+        <div class="box box2">box2</div>
+        <div class="box box3">box3</div>
+        <div class="box box4">box4</div>
+        <div class="box box5">box5</div>
+        <div class="box box6">box6</div>
+        <div class="box box7">box7</div>
+        <div class="box box8">box8</div>
+        <div class="box box9">box9</div>
+        <div class="box box10">box10</div>
+        <div class="box box11">box11</div>
+        <div class="box box12">box12</div>
+        <div class="box box13">box13</div>
+        <div class="box box14">box14</div>
+        <div class="box box15">box15</div>
+        <div class="box box16">box16</div>
+        <div class="box box17">box17</div>
+        <div class="box box18">box18</div>
+        <div class="box box19">box19</div>
+        <div class="box box20">box20</div>
+    </div>
+
+
+
+    <!-- JQ -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.box').click(function () {
+                // $(this).nextAll().css('background-color', 'pink');
+
+                // 自己也要變色的話，就先變自己，再把後面的一起變
+                // prevAll 可以把前面都是原本的，但後面要end（），回到第一層狀態，這樣之後點其他格才會前面變色
+                $(this).css('background-color', 'pink')
+                    .prevAll().css('background-color', '#acc').end()
+                    .nextAll().css('background-color', 'pink')
+                // 
+            })
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+</head>
+
+<style>
+    body {
+        height: 300vh;
+        width: 300vw;
+    }
+</style>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(window).scroll(function () {
+            console.log('scroll top:', $(this).scrollTop()); //往下滑就會顯示目前滑到哪裡了（會有數值），這樣就能決定滾到哪裡要出現什麼
+            console.log('scroll left:', $(this).scrollLeft());
+        })
+
+        $(window).resize(function () {
+            //偵測整體視窗的寬跟高，跟scroll不同，是看頁面大小
+            console.log('width:', $(this).width());
+            console.log('height:', $(this).height());
+        })
+    </script>
+</body>
+
+</html>
